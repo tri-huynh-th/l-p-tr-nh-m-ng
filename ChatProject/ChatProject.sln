@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sever", "ChatProject\Sever.csproj", "{91638357-C96A-49A7-8E33-E1A33EA5B806}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "ChatProject\Server.csproj", "{91638357-C96A-49A7-8E33-E1A33EA5B806}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{C21AB51A-A522-4696-834A-34DCB34E1308}"
 EndProject
