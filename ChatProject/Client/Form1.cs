@@ -17,7 +17,30 @@ namespace Client
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // lấy thông tin từ textBox
+            string userName = nameBox.Text;
+            string severIp = ipBox.Text;
+
+            // Kiểm tra nếu thông tin không trống
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(severIp))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                return;
+            }
+
+            // Tạo và hiển thị FormChat
+            ChatForm chatForm = new ChatForm(userName, severIp);
+            chatForm.Show();
+
+            // Ẩn FormLogin
+            this.Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
