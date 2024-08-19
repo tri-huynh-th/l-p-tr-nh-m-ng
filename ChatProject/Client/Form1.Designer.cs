@@ -32,8 +32,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ipBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,24 +64,6 @@
             this.nameBox.Size = new System.Drawing.Size(397, 38);
             this.nameBox.TabIndex = 2;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 332);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(281, 31);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Nhập địa chỉ IP của sever:";
-            // 
-            // ipBox
-            // 
-            this.ipBox.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold);
-            this.ipBox.Location = new System.Drawing.Point(158, 386);
-            this.ipBox.Name = "ipBox";
-            this.ipBox.Size = new System.Drawing.Size(397, 38);
-            this.ipBox.TabIndex = 4;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.RoyalBlue;
@@ -103,8 +83,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 547);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ipBox);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -121,8 +99,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox ipBox;
         private System.Windows.Forms.Button button1;
     }
 }

@@ -41,12 +41,12 @@
             // 
             this.messageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.messageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageBox.HideSelection = false;
             this.messageBox.Location = new System.Drawing.Point(288, 12);
             this.messageBox.Multiline = true;
             this.messageBox.Name = "messageBox";
             this.messageBox.ReadOnly = true;
-            this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.messageBox.Size = new System.Drawing.Size(511, 317);
+            this.messageBox.Size = new System.Drawing.Size(530, 317);
             this.messageBox.TabIndex = 0;
             // 
             // sendBox
@@ -57,7 +57,7 @@
             this.sendBox.Multiline = true;
             this.sendBox.Name = "sendBox";
             this.sendBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sendBox.Size = new System.Drawing.Size(365, 109);
+            this.sendBox.Size = new System.Drawing.Size(407, 109);
             this.sendBox.TabIndex = 1;
             // 
             // sendButton
@@ -65,9 +65,9 @@
             this.sendButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.sendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sendButton.Location = new System.Drawing.Point(659, 335);
+            this.sendButton.Location = new System.Drawing.Point(701, 335);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(119, 103);
+            this.sendButton.Size = new System.Drawing.Size(117, 109);
             this.sendButton.TabIndex = 2;
             this.sendButton.Text = "GỬI";
             this.sendButton.UseVisualStyleBackColor = false;
@@ -92,19 +92,18 @@
             this.connectTextBox.Name = "connectTextBox";
             this.connectTextBox.ReadOnly = true;
             this.connectTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.connectTextBox.Size = new System.Drawing.Size(246, 287);
+            this.connectTextBox.Size = new System.Drawing.Size(217, 287);
             this.connectTextBox.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 335);
+            this.label3.Location = new System.Drawing.Point(0, 349);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(190, 25);
             this.label3.TabIndex = 6;
             this.label3.Text = "Địa chỉ IP của sever:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // ipTextBox
             // 
@@ -121,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(830, 450);
             this.Controls.Add(this.ipTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.connectTextBox);

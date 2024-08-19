@@ -33,12 +33,10 @@ namespace Client
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.userNamelabel = new System.Windows.Forms.Label();
-            this.ipLabel = new System.Windows.Forms.Label();
             this.messageBox = new System.Windows.Forms.TextBox();
             this.sendBox = new System.Windows.Forms.TextBox();
             this.sendBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,12 +46,11 @@ namespace Client
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 160);
+            this.pictureBox1.Size = new System.Drawing.Size(235, 203);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // userNamelabel
             // 
@@ -66,46 +63,35 @@ namespace Client
             this.userNamelabel.TabIndex = 1;
             this.userNamelabel.Text = "User Name";
             // 
-            // ipLabel
-            // 
-            this.ipLabel.AutoSize = true;
-            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipLabel.Location = new System.Drawing.Point(12, 432);
-            this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(37, 29);
-            this.ipLabel.TabIndex = 3;
-            this.ipLabel.Text = "IP";
-            // 
             // messageBox
             // 
             this.messageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.messageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageBox.Location = new System.Drawing.Point(327, 1);
+            this.messageBox.HideSelection = false;
+            this.messageBox.Location = new System.Drawing.Point(310, 1);
             this.messageBox.Multiline = true;
             this.messageBox.Name = "messageBox";
             this.messageBox.ReadOnly = true;
-            this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.messageBox.Size = new System.Drawing.Size(677, 397);
+            this.messageBox.Size = new System.Drawing.Size(694, 397);
             this.messageBox.TabIndex = 4;
             // 
             // sendBox
             // 
             this.sendBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sendBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendBox.Location = new System.Drawing.Point(327, 404);
+            this.sendBox.Location = new System.Drawing.Point(310, 404);
             this.sendBox.Multiline = true;
             this.sendBox.Name = "sendBox";
             this.sendBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sendBox.Size = new System.Drawing.Size(521, 86);
+            this.sendBox.Size = new System.Drawing.Size(559, 86);
             this.sendBox.TabIndex = 5;
-            this.sendBox.TextChanged += new System.EventHandler(this.sendBox_TextChanged);
             // 
             // sendBtn
             // 
             this.sendBtn.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.sendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sendBtn.Location = new System.Drawing.Point(867, 404);
+            this.sendBtn.Location = new System.Drawing.Point(875, 399);
             this.sendBtn.Name = "sendBtn";
             this.sendBtn.Size = new System.Drawing.Size(118, 86);
             this.sendBtn.TabIndex = 6;
@@ -124,27 +110,15 @@ namespace Client
             this.label1.TabIndex = 7;
             this.label1.Text = "Người dùng:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 393);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 29);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Địa chỉ IP Server:";
-            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 497);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sendBtn);
             this.Controls.Add(this.sendBox);
             this.Controls.Add(this.messageBox);
-            this.Controls.Add(this.ipLabel);
             this.Controls.Add(this.userNamelabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ChatForm";
@@ -160,11 +134,9 @@ namespace Client
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label userNamelabel;
-        private System.Windows.Forms.Label ipLabel;
         private System.Windows.Forms.TextBox messageBox;
         private System.Windows.Forms.TextBox sendBox;
         private System.Windows.Forms.Button sendBtn;
         private Label label1;
-        private Label label2;
     }
 }

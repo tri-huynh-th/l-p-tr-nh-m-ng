@@ -23,17 +23,16 @@ namespace Client
         {
             // lấy thông tin từ textBox
             string userName = nameBox.Text;
-            string severIp = ipBox.Text;
 
             // Kiểm tra nếu thông tin không trống
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(severIp))
+            if (string.IsNullOrEmpty(userName) )
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
                 return;
             }
 
             // Tạo và hiển thị FormChat
-            ChatForm chatForm = new ChatForm(userName, severIp);
+            ChatForm chatForm = new ChatForm(userName);
             chatForm.Show();
 
             // Ẩn FormLogin

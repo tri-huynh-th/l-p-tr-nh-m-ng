@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -10,28 +11,60 @@ namespace Client
     public partial class ChatForm : Form
     {
         private string userName;
-        private string severIp;
         private TcpClient client;
         private StreamReader reader;
         private StreamWriter writer;
         private Thread clientThread;
+        private string clientKey = "secret_key"; // Khóa mà client sẽ gửi
+        private string severIp;
 
         public ChatForm()
         {
             InitializeComponent();
+            broadcastForServer();
         }
 
-        public ChatForm(string userName, string severIp)
+        public ChatForm(string userName)
         {
             InitializeComponent();
-
             this.userName = userName;
-            this.severIp = severIp;
-
             userNamelabel.Text = userName;
-            ipLabel.Text =  severIp;
+            broadcastForServer();
+        }
 
-            connectToServer();
+        private void broadcastForServer()
+        {
+            UdpClient udpClient = new UdpClient();
+            udpClient.EnableBroadcast = true;
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 9001);
+
+            string message = "DISCOVER_SERVER_REQUEST" + clientKey;
+            byte[] data = Encoding.UTF8.GetBytes(message);
+            udpClient.Send(data, data.Length, endPoint);
+
+            // Lắng nghe phản hồi từ server
+            udpClient.Client.ReceiveTimeout = 5000; // Đặt thời gian chờ là 5 giây
+            try
+            {
+                IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                byte[] serverResponse = udpClient.Receive(ref serverEndPoint);
+                string serverIp = Encoding.UTF8.GetString(serverResponse);
+
+                if (serverIp == "INVALID_KEY")
+                {
+                    appendMessage("Xác thực thất bại. Khóa không hợp lệ.");
+                }
+                else
+                {
+                    // Kết nối tới server
+                    severIp = serverIp;
+                    connectToServer();
+                }
+            }
+            catch (Exception ex)
+            {
+                appendMessage("Không thể tìm thấy server: " + ex.Message);
+            }
         }
 
         private void connectToServer()
@@ -99,7 +132,7 @@ namespace Client
             if (!string.IsNullOrEmpty(message))
             {
                 writer.WriteLine(message);
-                appendMessage("Bạn: "+ message);
+                appendMessage("Bạn: " + message);
                 sendBox.Clear();
             }
         }

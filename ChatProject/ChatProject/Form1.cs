@@ -15,6 +15,7 @@ namespace ChatProject
         private TcpListener server;
         private List<ClientInfo> clients;
         private Thread serverThread;
+        private string expectedKey = "secret_key"; // Khóa mà server mong đợi
 
         public Form1()
         {
@@ -26,6 +27,7 @@ namespace ChatProject
         {
             showLocalIp();
             startSever();
+            startListeningForClients();
         }
 
         private void startSever()
@@ -35,6 +37,41 @@ namespace ChatProject
             serverThread = new Thread(acceptClients);
             serverThread.Start();
             appendMessage("Sever sẵn sàng kết nối");
+        }
+
+        private void startListeningForClients()
+        {
+            Thread udpThread = new Thread(() =>
+            {
+                UdpClient udpServer = new UdpClient(9001);
+                IPEndPoint clientEndPoint = new IPEndPoint(IPAddress.Any, 0);
+
+                while (true)
+                {
+                    byte[] clientRequest = udpServer.Receive(ref clientEndPoint);
+                    string request = Encoding.UTF8.GetString(clientRequest);
+
+                    if (request.StartsWith("DISCOVER_SERVER_REQUEST"))
+                    {
+                        string clientKey = request.Substring("DISCOVER_SERVER_REQUEST".Length);
+
+                        // Kiểm tra key
+                        if (clientKey == expectedKey)
+                        {
+                            byte[] serverResponse = Encoding.UTF8.GetBytes(getLocalIpAddress());
+                            udpServer.Send(serverResponse, serverResponse.Length, clientEndPoint);
+                        }
+                        else
+                        {
+                            byte[] errorResponse = Encoding.UTF8.GetBytes("INVALID_KEY");
+                            udpServer.Send(errorResponse, errorResponse.Length, clientEndPoint);
+                        }
+                    }
+                }
+            });
+
+            udpThread.IsBackground = true;
+            udpThread.Start();
         }
 
         private void acceptClients()
@@ -56,7 +93,6 @@ namespace ChatProject
             var reader = new StreamReader(stream, Encoding.UTF8);
             var writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
 
-            // hiển thị client đã kết nối
             clientInfo.name = reader.ReadLine();
             Invoke((Action)(() =>
             {
@@ -64,7 +100,6 @@ namespace ChatProject
             }));
             appendMessage($"{clientInfo.name} đã kết nối");
 
-            // vòng lặp để đọc tin nhắn từ các client
             while (clientInfo.tpc.Connected)
             {
                 try
@@ -73,33 +108,31 @@ namespace ChatProject
                     if (message != null)
                     {
                         appendMessage($"{clientInfo.name}: {message}");
-                        broadcastMessage($"{clientInfo.name}: {message}", clientInfo); // Gửi tin nhắn tới tất cả các client khác
+                        broadcastMessage($"{clientInfo.name}: {message}", clientInfo);
                     }
                     else
                     {
-                        break; // Nếu message là null, client đã ngắt kết nối
+                        break;
                     }
                 }
                 catch (Exception)
                 {
-                    break; // Bắt ngoại lệ và thoát khỏi vòng lặp khi client ngắt kết nối
+                    break;
                 }
             }
 
-            // Xử lý khi client ngắt kết nối
-            clients.Remove(clientInfo); // Loại bỏ clientInfo khỏi danh sách clients
-            clientInfo.tpc.Close(); // Đóng kết nối TcpClient
+            clients.Remove(clientInfo);
+            clientInfo.tpc.Close();
             Invoke((Action)(() =>
             {
-                connectTextBox.Text = string.Empty; // Xóa nội dung cũ của TextBox
+                connectTextBox.Text = string.Empty;
                 foreach (var client in clients)
                 {
-                    connectTextBox.AppendText(client.name + Environment.NewLine); // Thêm lại tên của tất cả các client hiện đang kết nối
+                    connectTextBox.AppendText(client.name + Environment.NewLine);
                 }
             }));
-            appendMessage($"{clientInfo.name} đã ngắt kết nối"); // Thêm tin nhắn thông báo client đã ngắt kết nối
+            appendMessage($"{clientInfo.name} đã ngắt kết nối");
         }
-
 
         private void appendMessage(string message)
         {
