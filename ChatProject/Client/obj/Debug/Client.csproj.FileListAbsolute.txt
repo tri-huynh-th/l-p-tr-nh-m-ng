@@ -1,0 +1,11 @@
+C:\Users\phuoc\source\repos\ChatProject\Client\bin\Debug\Client.exe.config
+C:\Users\phuoc\source\repos\ChatProject\Client\bin\Debug\Client.exe
+C:\Users\phuoc\source\repos\ChatProject\Client\bin\Debug\Client.pdb
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.ChatForm.resources
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.Form1.resources
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.exe
+C:\Users\phuoc\source\repos\ChatProject\Client\obj\Debug\Client.pdb
